@@ -120,7 +120,6 @@ README.md              — Overview and index
 01-overview/           — Architecture and goals
 02-proxmox/            — Proxmox platform (cluster, storage, backups)
 03-networking/         — Network services and design (Pi-hole now; OPNsense/VLANs planned)
-04-media-stack/        — Media stack documentation
 images/diagrams/       — Redacted diagrams and screenshots
 ```
 
