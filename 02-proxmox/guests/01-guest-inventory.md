@@ -14,7 +14,6 @@ LAN IPs are shown as `192.168.x.x`. Resource allocations are included to communi
 | 103 | `uptime-kuma` | CT | `proxmox-02` | 1 vCPU, 1 GiB RAM, 8G disk | `192.168.x.x` | Availability monitoring | PBS |
 | 104 | `opnsense-lab` | VM | `proxmox-04` | 2 vCPU, 4 GiB RAM, 32G disk | `192.168.x.x` | OPNsense lab VM — not active edge | PBS |
 | 105 | `homeassistant` | VM | `proxmox-02` | 2 vCPU, 4 GiB RAM, 32G disk | `192.168.x.x` | Home automation | PBS |
-| 106 | `isponsorblocktv` | CT | `proxmox-02` | 1 vCPU, 512 MiB RAM, 8G disk | `192.168.x.x` | SponsorBlock utility for smart TV | PBS |
 | 120 | `dashy` | CT | `proxmox-01` | 2 vCPU, 2 GiB RAM, 8G disk | `192.168.x.x` | Service dashboard | PBS |
 
 ---
