@@ -1,5 +1,7 @@
 # Staging Notes and Cutover Plan
 
+> **Historical note:** This document reflects the original pre-cutover staging plan. The final implementation and any changes made during the actual cutover are documented in `../02-cutover-and-implementation/`.
+> 
 ## Staging notes
 
 **Temporary WAN during staging** — OPNsense was briefly given a default route via the existing ISP router to pull updates, then disabled again. WAN has otherwise remained down throughout staging to avoid impacting the live LAN.
