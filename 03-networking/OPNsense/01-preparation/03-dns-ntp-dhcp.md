@@ -42,6 +42,47 @@ Low and high ranges on each subnet are reserved for static assignments and infra
 
 ---
 
+### Subnet option data
+
+Each subnet has been configured with explicit gateway and DNS server options (Auto collect option data disabled). Every VLAN will push the correct gateway and Pi-hole DNS servers to all DHCP clients automatically at cutover.
+
+| VLAN | Gateway | DNS Servers |
+|---|---|---|
+| VLAN 10 — Workstations | 10.40.10.x | 10.40.20.x, 10.40.20.x |
+| VLAN 20 — Servers | 10.40.20.x | 10.40.20.x, 10.40.20.x |
+| VLAN 30 — IoT | 10.40.30.x | 10.40.20.x, 10.40.20.x |
+| VLAN 40 — Guest | 10.40.40.x | 10.40.20.x, 10.40.20.x |
+| VLAN 99 — Management | 10.40.99.x | 10.40.20.x, 10.40.20.x |
+
+---
+
+### DHCP reservations
+
+Static reservations are configured for all infrastructure hosts. Kea will assign these IPs at first DHCP request after cutover — no manual IP configuration required on the hosts themselves.
+
+**VLAN 20 — Servers:**
+
+| Hostname | IP |
+|---|---|
+| media-vm | 10.40.20.x |
+| pihole-a | 10.40.20.x |
+| pihole-b | 10.40.20.x |
+| uptime-kuma | 10.40.20.x |
+| homeassistant | 10.40.20.x |
+| dashy | 10.40.20.x |
+
+**VLAN 99 — Management:**
+
+| Hostname | IP |
+|---|---|
+| proxmox-01 | 10.40.99.x |
+| proxmox-02 | 10.40.99.x |
+| proxmox-03 | 10.40.99.x |
+| proxmox-04 | 10.40.99.x |
+| proxmox-backup | 10.40.99.x |
+| switch | 10.40.99.x *(reserved — hardware pending)* |
+---
+
 ## Screenshots
 
 <img width="859" height="551" alt="image" src="https://github.com/user-attachments/assets/4cae5b08-4cb9-4113-9c43-ad6dad00c008" />
