@@ -2,9 +2,11 @@
 
 ## Summary
 
-This section documents the design and staging of VLAN segmentation and baseline firewall policy in OPNsense before managed switching hardware is in place. The work is being done in a Proxmox VM so the eventual cutover is a controlled transition — not a live rebuild under pressure.
+This section documents the design and staging of VLAN segmentation and baseline firewall policy in OPNsense before managed switching hardware is in place. The work is being done in a Proxmox VM so the eventual cutover is a controlled transition, not a live rebuild under pressure.
 
 This is written to demonstrate design intent and operational discipline, not as a deployment tutorial.
+
+> **Historical note:** This section reflects the original pre-cutover preparation and staging work. The OPNsense cutover has since been completed, and the final implementation is documented in `../02-cutover-and-implementation/`.
 
 ---
 
