@@ -1,55 +1,44 @@
-# Proxmox Backup Job (Weekly)
+# PBS Storage Active on All Nodes
 
 ## Goal
 
-Run a predictable, low-touch weekly backup to PBS using snapshot mode, covering production guests.
+Ensure all cluster nodes target the same backup storage consistently, regardless of guest placement.
 
-After the OPNsense VLAN cutover, the backup target was validated against the PBS server on the Management / Servers VLAN.
+After the OPNsense VLAN cutover, PBS was migrated onto the Management / Servers VLAN and validated from the Proxmox nodes.
 
 ---
 
-## Current Configuration
+## Current State
 
 | Detail | Value |
 |---|---|
-| Schedule | Sundays at `01:00` |
-| Mode | `Snapshot` |
-| Compression | `ZSTD (fast and good)` |
-| Selection mode | `Include selected VMs` |
-| Target | `pbs-t7` |
-| Notes template | `{{guestname}}` |
+| Proxmox storage ID | `pbs-t7` |
+| PBS datastore | `t7-backups` |
+| PBS server | Management / Servers VLAN address |
+| Active on | `proxmox-01`, `proxmox-02`, `proxmox-03`, `proxmox-04` |
+| Post-cutover status | Online and validated after VLAN migration |
+
+Full IP addresses are intentionally redacted.
 
 ---
 
-## Guests in Scope
+## Why It Matters
 
-| ID | Guest | Type | Node |
-|---|---|---|---|
-| VM 100 | `media-vm` | Virtual Machine | `proxmox-01` |
-| CT 101 | `pihole` | LXC Container | `proxmox-02` |
-| CT 102 | `pihole-b` | LXC Container | `proxmox-03` |
-| CT 103 | `uptime-kuma` | LXC Container | `proxmox-02` |
-| VM 104 | `opnsense-lab` | Virtual Machine | `proxmox-04` |
-| VM 105 | `homeassistant` | Virtual Machine | `proxmox-02` |
-| CT 120 | `dashy` | LXC Container | `proxmox-01` |
+Having a single shared backup target across all nodes means backup policy is consistent by default. A guest can be migrated or placed on any node without changing how or where it gets backed up.
 
----
-
-## Why Snapshot Mode
-
-Snapshot mode allows backups to run against live guests without shutting them down, keeping services continuously available.
-
-For a homelab where most workloads run 24/7, it is the right default. Suspend or stop mode would introduce unnecessary downtime on a weekly basis.
+It also avoids per-node backup silos, simplifies retention management, and leaves room to add nodes or guests without redesigning the backup architecture.
 
 ---
 
 ## Post-Cutover Validation
 
-After PBS was migrated onto the Management / Servers VLAN, the backup target was validated from Proxmox.
+After the OPNsense VLAN cutover, PBS reachability and storage availability were validated against the new addressing scheme.
 
 Validation confirmed:
 
-- The `pbs-t7` storage target remains available
-- Backup jobs still point to the expected PBS datastore
-- PBS is reachable from the Proxmox nodes on the new addressing scheme
-- Backup validation remains part of normal operations
+- Proxmox nodes can reach PBS on the Management / Servers VLAN
+- The PBS storage target remains available in Proxmox
+- The expected datastore is still used
+- Backup paths survived the network migration
+
+Periodic backup and restore validation remains part of normal operations.
