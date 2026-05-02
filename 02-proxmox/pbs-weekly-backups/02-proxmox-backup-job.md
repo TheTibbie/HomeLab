@@ -2,11 +2,13 @@
 
 ## Goal
 
-Run a predictable, low-touch weekly backup to PBS using snapshot mode, covering all production guests.
+Run a predictable, low-touch weekly backup to PBS using snapshot mode, covering production guests.
+
+After the OPNsense VLAN cutover, the backup target was validated against the PBS server on the Management / Servers VLAN.
 
 ---
 
-## Current configuration
+## Current Configuration
 
 | Detail | Value |
 |---|---|
@@ -17,7 +19,9 @@ Run a predictable, low-touch weekly backup to PBS using snapshot mode, covering 
 | Target | `pbs-t7` |
 | Notes template | `{{guestname}}` |
 
-**Guests in scope**
+---
+
+## Guests in Scope
 
 | ID | Guest | Type | Node |
 |---|---|---|---|
@@ -31,6 +35,21 @@ Run a predictable, low-touch weekly backup to PBS using snapshot mode, covering 
 
 ---
 
-## Why snapshot mode
+## Why Snapshot Mode
 
-Snapshot mode allows backups to run against live guests without shutting them down, keeping services continuously available. For a homelab where most workloads run 24/7, it's the right default — suspend or stop mode would introduce unnecessary downtime on a weekly basis.
+Snapshot mode allows backups to run against live guests without shutting them down, keeping services continuously available.
+
+For a homelab where most workloads run 24/7, it is the right default. Suspend or stop mode would introduce unnecessary downtime on a weekly basis.
+
+---
+
+## Post-Cutover Validation
+
+After PBS was migrated onto the Management / Servers VLAN, the backup target was validated from Proxmox.
+
+Validation confirmed:
+
+- The `pbs-t7` storage target remains available
+- Backup jobs still point to the expected PBS datastore
+- PBS is reachable from the Proxmox nodes on the new addressing scheme
+- Backup validation remains part of normal operations
