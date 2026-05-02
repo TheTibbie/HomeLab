@@ -1,0 +1,87 @@
+# Phase 3 - AD DS Installation & Domain Promotion
+
+## Overview
+
+With the hostname set and static IP in place, the AD DS role was installed and DC01 was promoted to domain controller. This is the core of the lab, everything else builds on top of it.
+
+---
+
+## Role Installation
+
+Installed the Active Directory Domain Services role via Server Manager > Add Roles and Features. No errors during installation.
+
+---
+
+## Domain Promotion
+
+Promoted DC01 using the AD DS Configuration Wizard with the following settings:
+
+| Setting | Value |
+|---|---|
+| Deployment Operation | Add a new forest |
+| Root Domain Name | `exodus.lab` |
+| Forest Functional Level | Windows Server 2025 |
+| Domain Functional Level | Windows Server 2025 |
+| DNS Server | Yes |
+| Global Catalog | Yes |
+| NetBIOS Name | `EXODUS` |
+| Database Path | `C:\Windows\NTDS` |
+| Log Files Path | `C:\Windows\NTDS` |
+| SYSVOL Path | `C:\Windows\SYSVOL` |
+| DSRM Password | Set, stored securely, not documented here |
+
+The DNS delegation warning on the DNS Options screen is expected and harmless. No parent zone exists for an internal forest.
+
+---
+
+## Validation
+
+Confirmed domain promotion successful:
+
+```powershell
+Get-ADDomain
+```
+
+- Domain: `exodus.lab` ✓
+- NetBIOS: `EXODUS` ✓
+- Domain Mode: `Windows2025Domain` ✓
+- PDC Emulator: `DC01.exodus.lab` ✓
+- RID Master: `DC01.exodus.lab` ✓
+
+<img width="367" height="296" alt="image" src="https://github.com/user-attachments/assets/461d0344-2328-4d90-914a-a7f4639f3009" /><img width="1203" height="675" alt="image" src="https://github.com/user-attachments/assets/30c8484f-73fa-4d24-be04-24eb2655eb1e" />
+
+
+Confirmed DNS zones created automatically:
+
+```powershell
+Get-DnsServerZone
+```
+
+- `exodus.lab`, forward lookup zone, AD integrated ✓
+- `_msdcs.exodus.lab`, service records zone ✓
+- Reverse lookup zones auto-created ✓
+<img width="1090" height="242" alt="image" src="https://github.com/user-attachments/assets/064da31d-baf4-4bc2-aabb-02f04e5725d0" />
+
+
+Confirmed DNS resolution:
+
+```powershell
+Resolve-DnsName exodus.lab
+```
+
+- Resolves to `192.168.40.x` ✓
+<img width="798" height="164" alt="image" src="https://github.com/user-attachments/assets/8e908c20-922e-4c92-840b-b175cf620429" />
+
+
+---
+
+## Snapshot
+
+Proxmox snapshot taken of DC01, labelled `post-AD-promotion-baseline`.
+
+---
+
+## Next Steps
+
+1. Design and build OU hierarchy
+2. Create OUs via GUI, document PowerShell equivalent
