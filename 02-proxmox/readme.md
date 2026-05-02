@@ -11,7 +11,7 @@ This section documents the Proxmox VE platform that powers the homelab: cluster 
 - Cluster membership, transport, and quorum posture
 - Node hardware profiles and capacity context
 - Guest inventory (VMs and CTs) with placement rationale
-- Storage definitions — local LVM, shared ISO via NFS, PBS backup storage
+- Storage definitions: local LVM, shared ISO via NFS, PBS backup storage
 - Backup posture (Proxmox → PBS) including retention, GC, and integrity verification
 
 ---
