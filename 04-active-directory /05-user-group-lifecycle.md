@@ -29,9 +29,9 @@ AD is case-insensitive for authentication and lookups. SamAccountNames work iden
 
 All accounts were created with an initial password and User must change password at next logon enforced.
 
-<img width="374" height="182" alt="image" src="https://github.com/user-attachments/assets/a6f6445c-bd56-4a4e-a9cd-6b0233477714" /><img width="374" height="182" alt="image" src="https://github.com/user-attachments/assets/a41a4d41-6d37-48cd-adbe-1f3f73c90781" /><img width="374" height="182" alt="image" src="https://github.com/user-attachments/assets/cec440ac-0cb1-4163-a0ab-10676b221510" /><img width="374" height="182" alt="image" src="https://github.com/user-attachments/assets/6a93e84b-c8a6-4c9a-bcbf-d608d6ca85ed" />
+<img width="374" height="182" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/user-groups.png" />
 
-<img width="961" height="720" alt="image" src="https://github.com/user-attachments/assets/c0167f5f-e18e-4e83-bd19-d42251e5ea5a" />
+<img width="961" height="720" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/user-group-ps.png" />
 
 
 
@@ -74,7 +74,7 @@ Add-ADGroupMember -Identity "GRP_Department" -Members "flast"
 | GRP_Accounting | Global | Security | Groups\Security |
 | GRP_Admins | Global | Security | Groups\Security |
 
-<img width="498" height="330" alt="image" src="https://github.com/user-attachments/assets/c7e4a83c-c16f-4e62-a817-229299fe32f4" />
+<img width="498" height="330" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/ADUC-Security-Groups.png" />
 
 ---
 
@@ -86,7 +86,7 @@ Add-ADGroupMember -Identity "GRP_Department" -Members "flast"
 
 Distribution groups are used for email distribution. Functional testing requires an Exchange or M365 environment which is out of scope for this lab. The group was created to demonstrate naming convention and structure.
 
-<img width="572" height="346" alt="image" src="https://github.com/user-attachments/assets/745ba7b0-18c7-4ee0-bf85-78b4d5a666d2" />
+<img width="572" height="346" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/ADUC-Distro-Groups.png" />
 
 ---
 
