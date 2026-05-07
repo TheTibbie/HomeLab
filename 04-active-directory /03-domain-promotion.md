@@ -48,7 +48,7 @@ Get-ADDomain
 - PDC Emulator: `DC01.exodus.lab` ✓
 - RID Master: `DC01.exodus.lab` ✓
 
-<img width="367" height="296" alt="image" src="../assets/04-active-directory/03-domain-promotion/DC-promotion.png" /><img width="1203" height="675" alt="image" src="https://github.com/user-attachments/assets/30c8484f-73fa-4d24-be04-24eb2655eb1e" />
+<img width="367" height="296" alt="image" src="../assets/04-active-directory/03-domain-promotion/DC-promotion.png" /><img width="1203" height="675" alt="image" src="../assets/04-active-directory/03-domain-promotion/Promotion-check.png" />
 
 
 Confirmed DNS zones created automatically:
