@@ -23,8 +23,8 @@ Configured via the Default Domain Policy, applies domain-wide.
 ```powershell
 Get-ADDefaultDomainPasswordPolicy
 ```
-<img width="773" height="372" alt="image" src="https://github.com/user-attachments/assets/1e710b9b-65f0-4c2a-8ed3-0e9266fc4269" />
-<img width="560" height="242" alt="image" src="https://github.com/user-attachments/assets/2134eb15-5e56-4d4e-978c-4ba2108faec3" />
+<img width="773" height="372" alt="image" src="../assets/04-active-directory/06-group-policy/DC-PW-PS-check.png" />
+<img width="560" height="242" alt="image" src="../assets/04-active-directory/06-group-policy/DC-PW-check.png" />
 
 
 ---
@@ -47,7 +47,8 @@ All four GPOs below are linked to `OU=Workstations,OU=Computers,OU=Exodus,DC=Exo
 
 Screensaver and password protection together function as a screen lock. After 15 minutes of inactivity, users must re-authenticate.
 
-<img width="1129" height="450" alt="image" src="https://github.com/user-attachments/assets/03af81a5-bde3-4fd1-a5a0-715e8137b546" />
+<img width="1129" height="450" alt="image" src="../assets/04-active-directory/06-group-policy/screen-lock.png
+" />
 
 ---
 
@@ -59,7 +60,7 @@ Screensaver and password protection together function as a screen lock. After 15
 | Removable Disks: Deny read access | Computer Config > Admin Templates > System > Removable Storage Access | Enabled |
 | Removable Disks: Deny write access | Computer Config > Admin Templates > System > Removable Storage Access | Enabled |
 
-<img width="1126" height="466" alt="image" src="https://github.com/user-attachments/assets/6cf9bb8e-1af5-4c9a-a565-67fbbcc54d8e" />
+<img width="1126" height="466" alt="image" src="../assets/04-active-directory/06-group-policy/USB-block.png" />
 
 
 ---
@@ -76,7 +77,7 @@ Default security level left as Unrestricted to avoid breaking legitimate softwar
 
 Setting the default to Disallowed without a full application whitelist risks breaking Windows components, admin tools, and user applications. Targeted rules are the safer and more practical enterprise approach.
 
-<img width="1250" height="514" alt="image" src="https://github.com/user-attachments/assets/89f9366f-38d6-4574-b86e-9d447cdd61b9" />
+<img width="1250" height="514" alt="image" src="../assets/04-active-directory/06-group-policy/Software-restrict.png" />
 
 
 ---
@@ -91,7 +92,7 @@ Standard users are restricted from tools commonly used to bypass policy or make 
 | Prevent access to registry editing tools | User Config > Admin Templates > System | Enabled (silent regedit also disabled) |
 | Block PowerShell | User Config > Admin Templates > System > Don't run specified Windows applications | `powershell.exe`, `powershell_ise.exe` |
 
-<img width="1075" height="470" alt="image" src="https://github.com/user-attachments/assets/02654613-737c-496e-9844-84f3d453d218" />
+<img width="1075" height="470" alt="image" src="../assets/04-active-directory/06-group-policy/admin-restrict.png" />
 
 
 ---
@@ -104,7 +105,7 @@ Configured via Restricted Groups to enforce that only Domain Admins are members 
 |---|---|---|
 | Restricted Group | Computer Config > Policies > Windows Settings > Security Settings > Restricted Groups | Administrators, Members: Domain Admins only |
 
-<img width="892" height="405" alt="image" src="https://github.com/user-attachments/assets/19385948-c875-4a6f-8b94-23e65d8515ae" />
+<img width="892" height="405" alt="image" src="../assets/04-active-directory/06-group-policy/local-admin-restrict.png" />
 
 ---
 
@@ -117,8 +118,9 @@ Get-GPO -All | Select-Object DisplayName, GpoStatus
 # Verify GPOs linked to Workstations OU
 Get-GPInheritance -Target "OU=Workstations,OU=Computers,OU=Exodus,DC=Exodus,DC=lab" | Select-Object -ExpandProperty GpoLinks
 ```
-<img width="773" height="225" alt="image" src="https://github.com/user-attachments/assets/53551fe1-0ce2-49b1-b3cd-b18e70694f71" />
-<img width="1267" height="612" alt="image" src="https://github.com/user-attachments/assets/b3469062-9d3b-4878-931c-7a752c332e88" />
+<img width="773" height="225" alt="image" src="../assets/04-active-directory/06-group-policy/policy-ps-check.png" />
+<img width="1267" height="612" alt="image" src="../assets/04-active-directory/06-group-policy/policy-ps-check2.png
+" />
 
 
 ---
