@@ -32,7 +32,8 @@ Created reverse lookup zone for the `192.168.40.0/24` subnet via DNS Manager.
 ```powershell
 Add-DnsServerPrimaryZone -NetworkID "192.168.40.0/24" -ReplicationScope "Domain"
 ```
-<img width="833" height="491" alt="image" src="https://github.com/user-attachments/assets/77776b7f-8659-48ef-bc96-1436a2795128" />
+<img width="833" height="491" alt="image" src="../assets/04-active-directory/07-dns-configuration/Reverse-lookup-zone.png
+" />
 
 
 ---
@@ -49,7 +50,7 @@ DC01's A record was registered automatically during domain promotion. The PTR re
 ```powershell
 Add-DnsServerResourceRecordPtr -ZoneName "40.168.192.in-addr.arpa" -Name "x" -PtrDomainName "DC01.Exodus.lab"
 ```
-<img width="934" height="466" alt="image" src="https://github.com/user-attachments/assets/027dc5f5-c673-43d6-a692-89cf91d39056" />
+<img width="934" height="466" alt="image" src="../assets/04-active-directory/07-dns-configuration/static-record.png" />
 
 ---
 
@@ -76,7 +77,7 @@ Resolve-DnsName 192.168.40.x
 - Forward: `DC01.Exodus.lab` resolves correctly ✓
 - Reverse: `192.168.40.x` resolves to `DC01.Exodus.lab` ✓
 
-<img width="897" height="290" alt="image" src="https://github.com/user-attachments/assets/6109da70-b30a-472e-a2af-30cdb8112bbc" />
+<img width="897" height="290" alt="image" src="../assets/04-active-directory/07-dns-configuration/validation.png" />
 
 
 ---
