@@ -60,7 +60,7 @@ Get-DnsServerZone
 - `exodus.lab`, forward lookup zone, AD integrated ✓
 - `_msdcs.exodus.lab`, service records zone ✓
 - Reverse lookup zones auto-created ✓
-<img width="1090" height="242" alt="image" src="https://github.com/user-attachments/assets/064da31d-baf4-4bc2-aabb-02f04e5725d0" />
+<img width="1090" height="242" alt="image" src="../assets/04-active-directory/03-domain-promotion/dns-server-zone.png" />
 
 
 Confirmed DNS resolution:
@@ -70,7 +70,7 @@ Resolve-DnsName exodus.lab
 ```
 
 - Resolves to `192.168.40.x` ✓
-<img width="798" height="164" alt="image" src="https://github.com/user-attachments/assets/8e908c20-922e-4c92-840b-b175cf620429" />
+<img width="798" height="164" alt="image" src="../assets/04-active-directory/03-domain-promotion/dns-resolution.png" />
 
 
 ---
