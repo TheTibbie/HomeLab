@@ -15,7 +15,7 @@ Four department shares were created on DC01 under `C:\Shares\`. Share permission
 | Accounting | `C:\Shares\Accounting` | GRP_Accounting |
 | Shared | `C:\Shares\Shared` | Domain Users (all staff) |
 
-<img width="770" height="446" alt="image" src="https://github.com/user-attachments/assets/338be8f7-ccaf-4f83-a459-389cb3c0e2d4" />
+<img width="770" height="446" alt="image" src="../assets/04-active-directory/09-file-share-permissions/file-shares.png" />
 
 
 ---
@@ -33,7 +33,7 @@ Two layers of permissions apply to every share. Effective access is always the m
 
 Share permissions are set broadly because NTFS permissions handle the granular access control. This is standard enterprise practice.
 
-<img width="347" height="476" alt="image" src="https://github.com/user-attachments/assets/989ce125-75b7-4e46-a881-f9531e98665c" />
+<img width="347" height="476" alt="image" src="../assets/04-active-directory/09-file-share-permissions/share-permissions.png" />
 
 
 **NTFS Permissions:**
@@ -103,7 +103,7 @@ New-Item -Path "\\DC01\IT\test.txt" -ItemType File   # Created successfully
 
 `Test-Path` only verifies network reachability, it does not validate NTFS access. Always use a file creation or read test to confirm effective permissions.
 
-<img width="964" height="413" alt="image" src="https://github.com/user-attachments/assets/61a2df19-8e9d-4a76-91d4-af748e428121" />
+<img width="964" height="413" alt="image" src="../assets/04-active-directory/09-file-share-permissions/permission-verify.png" />
 
 
 ---
