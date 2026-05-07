@@ -40,9 +40,9 @@ A dedicated GPO named **DC Security Audit Policy** was created and linked to the
 
 The following subcategories were already enabled from Windows Server 2025 defaults prior to GPO application, verified via `auditpol /get /category:*`:
 
-<img width="762" height="708" alt="image" src="https://github.com/user-attachments/assets/a58320ef-0d8f-4981-8019-9649c695d5fa" />
+<img width="762" height="708" alt="image" src="../assets/04-active-directory/13-audit-logging/1.png" />
 
-<img width="576" height="718" alt="image" src="https://github.com/user-attachments/assets/84b14e01-408c-48de-9cef-849ce6b824d8" />
+<img width="576" height="718" alt="image" src="../assets/04-active-directory/13-audit-logging/2.png" />
 
 
 
