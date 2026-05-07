@@ -43,8 +43,8 @@ BACKUP01 is a Windows Server 2025 VM provisioned specifically to receive backups
 
 Share and NTFS permissions are aligned so ExodusAdmin can read and write backup data from DC01 over the network.
 
-<img width="779" height="522" alt="image" src="https://github.com/user-attachments/assets/a64b6ccc-2d41-46af-b257-e3adac366d50" />
-<img width="686" height="318" alt="image" src="https://github.com/user-attachments/assets/239f6f22-e453-47e4-9cdf-eba3e1017792" />
+<img width="779" height="522" alt="image" src="../assets/04-active-directory/12-backup-recovery/backup-folder.png" />
+<img width="686" height="318" alt="image" src="../assets/04-active-directory/12-backup-recovery/backup-permissions.png" />
 
 ---
 
@@ -66,7 +66,7 @@ The Server Manager GUI wizard can also install this feature, but it uses WinRM t
 |---|---|---|
 | Windows-Server-Backup | Available | Installed |
 
-<img width="807" height="205" alt="image" src="https://github.com/user-attachments/assets/5e6e4c24-98af-42b7-941a-bfc54f7cc92e" />
+<img width="807" height="205" alt="image" src="../assets/04-active-directory/12-backup-recovery/Install-win-backup-ps.png" />
 
 ---
 
@@ -90,8 +90,8 @@ Log of files successfully backed up: C:\WINDOWS\Logs\WindowsServerBackup\Backup-
 
 The backup lands on BACKUP01 at `C:\BackupShare\WindowsImageBackup\DC01\`.
 
-<img width="822" height="593" alt="image" src="https://github.com/user-attachments/assets/6038f58d-675e-4ef3-a898-d2554a0997fe" />
-<img width="800" height="293" alt="image" src="https://github.com/user-attachments/assets/4769b9fc-4f80-4da6-92e6-d00d06c0fa42" />
+<img width="822" height="593" alt="image" src="../assets/04-active-directory/12-backup-recovery/success-backup.png" />
+<img width="800" height="293" alt="image" src="../assets/04-active-directory/12-backup-recovery/success-backup-gui.png" />
 
 ---
 
@@ -141,7 +141,7 @@ Confirm the user exists:
 Get-ADUser -Identity "restoreuser"
 ```
 
-<img width="1102" height="392" alt="image" src="https://github.com/user-attachments/assets/cc659ce8-b93e-4b22-a462-d95ccccaeac8" />
+<img width="1102" height="392" alt="image" src="../assets/04-active-directory/12-backup-recovery/backup-test.png" />
 
 ---
 
@@ -185,7 +185,7 @@ Version identifier: 04/21/2026-19:38
 Can recover: Volume(s), File(s), Application(s), System State
 ```
 
-<img width="671" height="266" alt="image" src="https://github.com/user-attachments/assets/31efab65-8e16-4d3b-aa0b-daac5861923b" />
+<img width="671" height="266" alt="image" src="../assets/04-active-directory/12-backup-recovery/backup-target.png" />
 
 ---
 
