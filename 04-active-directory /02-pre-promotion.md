@@ -21,7 +21,7 @@ After the rename, the Ethernet adapter wasn't showing up. The VirtIO NIC driver 
 - Used Update Driver and pointed it at the mounted VirtIO ISO
 - Adapter came up as Red Hat VirtIO Ethernet Adapter
 
-<img width="528" height="498" alt="image" src="../assets/04-active-directory/02-pre-promotion/Device-manager1.png" /><img width="450" height="507" alt="image" src="https://github.com/user-attachments/assets/a4e2c458-3ecd-4b70-995b-994bbf8ed1fe" />
+<img width="528" height="498" alt="image" src="../assets/04-active-directory/02-pre-promotion/Device-manager1.png" /><img width="450" height="507" alt="image" src="../assets/04-active-directory/02-pre-promotion/Device-manager-2.png" />
 
 
 
@@ -40,7 +40,7 @@ Verified `192.168.40.x` was free using a network scanner before assigning it.
 
 DNS points to itself, which is required for AD DS. `127.0.0.1` was intentionally avoided, AD best practice is to use the adapter's own static IP for the DNS entry, not the loopback address.
 
-<img width="468" height="546" alt="image" src="https://github.com/user-attachments/assets/4958b899-d8c2-4c7a-89ec-142dced8f530" />
+<img width="468" height="546" alt="image" src="../assets/04-active-directory/02-pre-promotion/ip-settings" />
 
 
 ---
