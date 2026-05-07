@@ -32,7 +32,7 @@ All scripts are stored on DC01 at `C:\Scripts\AD\` and can be run from an elevat
 | `Get-ADReports.ps1` | Interactive menu-driven reporting and account management tool |
 | `users.csv` | Sample CSV input file for bulk import |
 
-<img width="750" height="471" alt="image" src="..assets/04-active-directory/11-powershell-automation/scripts.png" />
+<img width="750" height="471" alt="image" src="../assets/04-active-directory/11-powershell-automation/scripts.png" />
 
 ---
 
