@@ -32,8 +32,7 @@ Created reverse lookup zone for the `192.168.40.0/24` subnet via DNS Manager.
 ```powershell
 Add-DnsServerPrimaryZone -NetworkID "192.168.40.0/24" -ReplicationScope "Domain"
 ```
-<img width="833" height="491" alt="image" src="../assets/04-active-directory/07-dns-configuration/Reverse-lookup-zone.png
-" />
+<img width="833" height="491" alt="image" src="../assets/04-active-directory/07-dns-configuration/Reverse-lookup-zone.png" />
 
 
 ---
