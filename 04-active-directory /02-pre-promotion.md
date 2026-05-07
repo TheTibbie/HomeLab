@@ -40,7 +40,7 @@ Verified `192.168.40.x` was free using a network scanner before assigning it.
 
 DNS points to itself, which is required for AD DS. `127.0.0.1` was intentionally avoided, AD best practice is to use the adapter's own static IP for the DNS entry, not the loopback address.
 
-<img width="468" height="546" alt="image" src="../assets/04-active-directory/02-pre-promotion/ip-settings" />
+<img width="468" height="546" alt="image" src="../assets/04-active-directory/02-pre-promotion/ip-settings.png" />
 
 
 ---
