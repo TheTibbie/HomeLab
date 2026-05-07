@@ -119,8 +119,7 @@ Get-GPO -All | Select-Object DisplayName, GpoStatus
 Get-GPInheritance -Target "OU=Workstations,OU=Computers,OU=Exodus,DC=Exodus,DC=lab" | Select-Object -ExpandProperty GpoLinks
 ```
 <img width="773" height="225" alt="image" src="../assets/04-active-directory/06-group-policy/policy-ps-check.png" />
-<img width="1267" height="612" alt="image" src="../assets/04-active-directory/06-group-policy/policy-ps-check2.png
-" />
+<img width="1267" height="612" alt="image" src="../assets/04-active-directory/06-group-policy/policy-ps-check2.png" />
 
 
 ---
