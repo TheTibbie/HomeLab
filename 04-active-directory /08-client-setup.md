@@ -31,7 +31,7 @@ Both clients were assigned static IPs before domain join. DNS was pointed to DC0
 | Subnet Mask | 255.255.255.0 | 255.255.255.0 |
 | Gateway | 192.168.40.x | 192.168.40.x |
 | DNS | 192.168.40.x (DC01) | 192.168.40.x (DC01) |
-<img width="537" height="563" alt="image" src="https://github.com/user-attachments/assets/b3c6c60d-4ffd-41f6-a718-eb2685027fe1" />
+<img width="537" height="563" alt="image" src="../assets/04-active-directory/08-client-setup/Client-Network-config.png" />
 
 ---
 
@@ -63,9 +63,9 @@ Get-ADComputer -Filter * | Select-Object Name, DistinguishedName
 | EXO-WKS-001 | OU=Workstations,OU=Computers,OU=Exodus |
 | EXO-WKS-002 | OU=Workstations,OU=Computers,OU=Exodus |
 
-<img width="671" height="355" alt="image" src="https://github.com/user-attachments/assets/1f1cab85-e553-42d5-a72b-c29a1b3a2526" />
+<img width="671" height="355" alt="image" src="../assets/04-active-directory/08-client-setup/ADUC-pcs.png" />
 
-<img width="919" height="165" alt="image" src="https://github.com/user-attachments/assets/fd3d8606-c9c2-4c70-91f7-b0d8113093e6" />
+<img width="919" height="165" alt="image" src="../assets/04-active-directory/08-client-setup/aduc-ps.png" />
 
 
 ---
@@ -82,7 +82,7 @@ Software Restriction Policy
 Local Administrator Restriction Policy
 Default Domain Policy
 ```
-<img width="836" height="580" alt="image" src="https://github.com/user-attachments/assets/09eeeca1-a238-4c09-9e5e-6f76365c5ab6" />
+<img width="836" height="580" alt="image" src="../assets/04-active-directory/08-client-setup/gpo-verify.png" />
 
 
 `Admin Restrictions Policy` contains User Configuration settings only. It applies at user logon, not computer startup, so it will not appear in computer scope results.
@@ -95,7 +95,7 @@ Default Domain Policy
 
 JSmith logged into EXO-WKS-001 successfully. User is a member of `GRP_IT` and `Domain Users` as expected.
 
-<img width="773" height="252" alt="image" src="https://github.com/user-attachments/assets/c9a78938-0e60-414f-9f2a-fc6c593ede60" />
+<img width="773" height="252" alt="image" src="../assets/04-active-directory/08-client-setup/Domain-log-in.png" />
 
 ---
 
