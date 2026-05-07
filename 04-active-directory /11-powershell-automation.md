@@ -32,8 +32,7 @@ All scripts are stored on DC01 at `C:\Scripts\AD\` and can be run from an elevat
 | `Get-ADReports.ps1` | Interactive menu-driven reporting and account management tool |
 | `users.csv` | Sample CSV input file for bulk import |
 
-<img width="750" height="471" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/scripts.png" />
+<img width="750" height="471" alt="image" src="..assets/04-active-directory/11-powershell-automation/scripts.png" />
 
 ---
 
@@ -55,8 +54,7 @@ Reads a CSV file and provisions AD accounts in bulk. Each row is processed indep
 
 
 
-<img width="1029" height="611" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/new-bulkusers.png" />
+<img width="1029" height="611" alt="image" src="../assets/04-active-directory/11-powershell-automation/new-bulkusers.png" />
 
 
 ---
@@ -75,8 +73,7 @@ Creates a single user account from named parameters. Intended for individual onb
 6. If the password passes, enable the account and add the user to `GRP_Department` and `DL_AllStaff`
 7. Print a verification summary showing the DN, enabled state, and group memberships
 
-<img width="790" height="551" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/new-onboarduser.png" />
+<img width="790" height="551" alt="image" src="../assets/04-active-directory/11-powershell-automation/new-onboarduser.png" />
 
 
 ---
@@ -96,8 +93,7 @@ Offboards a user account in three steps: disable the account, strip all group me
 
 > Note: Domain Users is a primary group and cannot be removed via MemberOf. This is expected behaviour and does not require manual intervention.
 
-<img width="978" height="585" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/remove-offboarduser.png" />
+<img width="978" height="585" alt="image" src="../assets/04-active-directory/11-powershell-automation/remove-offboarduser.png" />
 
 
 ---
@@ -129,17 +125,13 @@ An interactive menu-driven tool for AD reporting and account management. Run the
 5. Offer a CSV export after results are displayed
 6. Return to the menu after each report until the user selects Exit
 
-<img width="559" height="357" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/adreports1.png" />
+<img width="559" height="357" alt="image" src="../assets/04-active-directory/11-powershell-automation/adreports1.png" />
 
-<img width="939" height="571" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/adreports2.png" />
+<img width="939" height="571" alt="image" src="../assets/04-active-directory/11-powershell-automation/adreports2.png" />
 
-<img width="809" height="531" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/adreports3.png" />
+<img width="809" height="531" alt="image" src="../assets/04-active-directory/11-powershell-automation/adreports3.png" />
 
-<img width="960" height="418" alt="image" src="../assets/04-active-directory/11-powershell-automation
-/adreports4.png" />
+<img width="960" height="418" alt="image" src="../assets/04-active-directory/11-powershell-automation/adreports4.png" />
 
 
 
