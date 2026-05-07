@@ -28,7 +28,7 @@ The built-in Administrator account was renamed to `ExodusAdmin` via Local Securi
 
 Renaming the built-in account removes a known, fixed attack target. Brute-force and credential stuffing tools routinely target `Administrator` by name. It doesn't prevent compromise on its own, but it eliminates a guaranteed username from the attacker's starting position.
 
-<img width="910" height="265" alt="Screenshot 2026-04-16 094148" src="https://github.com/user-attachments/assets/58d60639-6747-4ffd-bf78-c75e77c05b57" />
+<img width="910" height="265" alt="Screenshot 2026-04-16 094148" src="../assets/04-active-directory/10-security-hardening/admin-name.png" />
 
 
 > **Note:** The rename takes effect on the next login. PowerShell sessions opened before re-login will still show `exodus\administrator` in `whoami` output. This is expected and resolves after a fresh login as `ExodusAdmin`.
@@ -65,7 +65,7 @@ Set-Service -Name Spooler -StartupType Disabled
 |---|---|---|
 | Startup Type | Automatic | Disabled |
 | Status | Running | Stopped |
-<img width="399" height="463" alt="image" src="https://github.com/user-attachments/assets/b12fb264-107b-46ab-a8d5-6197b712bc5b" />
+<img width="399" height="463" alt="image" src="../assets/04-active-directory/10-security-hardening/disabled-spooler.png" />
 
 
 ---
@@ -95,7 +95,7 @@ Set-Service -Name WinRM -StartupType Disabled
 |---|---|---|
 | Startup Type | Automatic | Disabled |
 | Status | Running | Stopped |
-<img width="405" height="467" alt="image" src="https://github.com/user-attachments/assets/d5664723-1445-45c3-8db2-405d5b132fde" />
+<img width="405" height="467" alt="image" src="../assets/04-active-directory/10-security-hardening/disabled-winrm.png" />
 
 
 ---
@@ -105,7 +105,7 @@ Set-Service -Name WinRM -StartupType Disabled
 ```powershell
 Get-Service -Name Spooler, WinRM | Select-Object Name, Status, StartType
 ```
-<img width="929" height="139" alt="image" src="https://github.com/user-attachments/assets/22b0c3f8-e49f-4ef0-811b-bc79b76f64d5" />
+<img width="929" height="139" alt="image" src="../assets/04-active-directory/10-security-hardening/service-verify.png" />
 
 
 
@@ -146,7 +146,7 @@ Get-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" | Select-
 | Windows Remote Management (HTTP-In) - Domain, Private | Enabled | Disabled |
 | Windows Remote Management (HTTP-In) - Public | Enabled | Disabled |
 
-<img width="1260" height="170" alt="image" src="https://github.com/user-attachments/assets/16804f0e-a6b9-4296-87e4-77b0906071ce" />
+<img width="1260" height="170" alt="image" src="../assets/04-active-directory/10-security-hardening/verify2.png" />
 
 **Print Spooler Inbound Rules:**
 
@@ -158,7 +158,7 @@ Get-NetFirewallRule | Where-Object { $_.DisplayName -like "*Spooler*" } | Select
 
 All Spooler inbound rules set to Disabled across all profiles.
 
-<img width="1255" height="346" alt="image" src="https://github.com/user-attachments/assets/1a55d2f8-9221-4b96-847c-8c91beed75b2" />
+<img width="1255" height="346" alt="image" src="../assets/04-active-directory/10-security-hardening/verify3.png" />
 
 
 ### Default Inbound Action
@@ -186,7 +186,7 @@ Get-NetFirewallProfile | Select-Object Name, Enabled, DefaultInboundAction, Defa
 | Private | NotConfigured | Block |
 | Public | NotConfigured | Block |
 
-<img width="1223" height="166" alt="image" src="https://github.com/user-attachments/assets/85d86ce2-4510-45ea-bedc-a9fb79f49c0c" />
+<img width="1223" height="166" alt="image" src="../assets/04-active-directory/10-security-hardening/default-inbound-verify.png" />
 
 
 > **Note:** Outbound remains `NotConfigured` intentionally. Locking down outbound on a DC without a validated outbound ruleset risks breaking AD replication, DNS forwarding, NTP synchronisation, and Kerberos ticket issuance. Outbound hardening is out of scope for this phase.
@@ -211,7 +211,7 @@ Without this set explicitly, Windows negotiates the highest mutually supported a
 4. Select Send NTLMv2 response only. Refuse LM & NTLM
 5. Click Apply > OK
 
-<img width="1183" height="198" alt="image" src="https://github.com/user-attachments/assets/06837f58-a2f8-4148-9965-5344f875aa63" />
+<img width="1183" height="198" alt="image" src="../assets/04-active-directory/10-security-hardening/lan-manager-verify.png" />
 
 
 **PowerShell Equivalent:**
@@ -231,7 +231,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "LmCom
 Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "LmCompatibilityLevel"
 ```
 
-<img width="1210" height="199" alt="image" src="https://github.com/user-attachments/assets/7848462a-d0f4-41dd-8546-101642e57eb8" />
+<img width="1210" height="199" alt="image" src="../assets/04-active-directory/10-security-hardening/lan-manager-ps-verify.png" />
 
 
 
@@ -258,7 +258,7 @@ Anonymous enumeration allows unauthenticated connections to pull account names, 
 
 > Do not allow anonymous enumeration of SAM accounts was already Enabled. No change required.
 
-<img width="985" height="122" alt="image" src="https://github.com/user-attachments/assets/d3a20db7-e283-424f-ac56-0f269ef0600c" />
+<img width="985" height="122" alt="image" src="../assets/04-active-directory/10-security-hardening/anon-enumeration-verify.png" />
 
 
 **PowerShell Equivalent:**
@@ -281,7 +281,7 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "Restr
 Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "RestrictAnonymousSAM", "RestrictAnonymous"
 ```
 
-<img width="1260" height="241" alt="image" src="https://github.com/user-attachments/assets/e23fdf1a-95af-4923-b690-0ee5c75ffa36" />
+<img width="1260" height="241" alt="image" src="../assets/04-active-directory/10-security-hardening/anon-enumeration-ps-verify.png" />
 
 
 ---
