@@ -27,7 +27,7 @@ exodus.lab
     │   └── Distribution
     └── Disabled
 ```
-<img width="567" height="501" alt="image" src="https://github.com/user-attachments/assets/204975fe-3eed-457e-84dc-7abb53192aab" />
+<img width="567" height="501" alt="image" src="../assets/04-active-directory/04-ou-structure/ou-structure.png" />
 
 
 ---
