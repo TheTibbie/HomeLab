@@ -203,7 +203,7 @@ The system state recovery operation that started at [date time] has successfully
 
 DC01 will reboot automatically and the safeboot flag will be cleared by the restore process.
 
-<img width="1028" height="363" alt="image" src="https://github.com/user-attachments/assets/986b616d-6016-482e-8edb-d97f4578bb62" />
+<img width="1028" height="363" alt="image" src="../assets/04-active-directory/12-backup-recovery/backup-success.png" />
 
 ---
 
@@ -217,7 +217,7 @@ Get-ADUser -Identity "restoreuser"
 
 Expected result: an error stating the object cannot be found. The user was created after the backup was taken so it should no longer exist. This confirms the restore worked.
 
-<img width="1092" height="264" alt="image" src="https://github.com/user-attachments/assets/d4790967-11c1-4541-9f5e-283e5b8799fe" />
+<img width="1092" height="264" alt="image" src="../assets/04-active-directory/12-backup-recovery/backup-success2.png" />
 
 ---
 
@@ -229,7 +229,7 @@ bcdedit /enum | Select-String "safeboot"
 
 No output means the flag is clear and DC01 will boot normally on next restart.
 
-<img width="829" height="243" alt="image" src="https://github.com/user-attachments/assets/fd40f30f-65b9-4154-bcd8-da11ed699d7b" />
+<img width="829" height="243" alt="image" src="../assets/04-active-directory/12-backup-recovery/normal.png" />
 
 ---
 
