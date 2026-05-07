@@ -21,7 +21,7 @@ After the rename, the Ethernet adapter wasn't showing up. The VirtIO NIC driver 
 - Used Update Driver and pointed it at the mounted VirtIO ISO
 - Adapter came up as Red Hat VirtIO Ethernet Adapter
 
-<img width="528" height="498" alt="image" src="https://github.com/user-attachments/assets/bd375638-9ab9-49dc-ab77-809031418e09" /><img width="450" height="507" alt="image" src="https://github.com/user-attachments/assets/a4e2c458-3ecd-4b70-995b-994bbf8ed1fe" />
+<img width="528" height="498" alt="image" src="../assets/04-active-directory/02-pre-promotion/Device-manager1.png" /><img width="450" height="507" alt="image" src="https://github.com/user-attachments/assets/a4e2c458-3ecd-4b70-995b-994bbf8ed1fe" />
 
 
 
