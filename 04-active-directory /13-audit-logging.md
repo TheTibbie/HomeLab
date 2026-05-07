@@ -58,7 +58,7 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 | Account Logon | Audit Credential Validation | Success and Failure | Captures NTLM authentication attempts including failures that may indicate brute force |
 | Account Logon | Audit Kerberos Authentication Service | Success and Failure | Captures Kerberos TGT requests and failures at the KDC |
 | Account Logon | Audit Kerberos Service Ticket Operations | Success and Failure | Captures service ticket requests and failures, key for detecting Kerberoasting |
-<img width="674" height="315" alt="image" src="https://github.com/user-attachments/assets/5925df66-ac5a-4a63-9d52-e40545925192" />
+<img width="674" height="315" alt="image" src="../assets/04-active-directory/13-audit-logging/3.png" />
 
 ---
 
@@ -67,14 +67,14 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 | Account Management | Audit Computer Account Management | Success and Failure | Captures computer account creates, modifies, and deletes |
 | Account Management | Audit Security Group Management | Success and Failure | Captures changes to security groups including membership changes |
 | Account Management | Audit User Account Management | Success and Failure | Captures user account creates, modifies, disables, and password resets |
-<img width="728" height="400" alt="image" src="https://github.com/user-attachments/assets/94d32232-4a62-447a-8b07-da4ab2a5aab8" />
+<img width="728" height="400" alt="image" src="../assets/04-active-directory/13-audit-logging/4.png" />
 
 ---
 
 | Category | Subcategory | Setting | Reason |
 |---|---|---|---|
 | Detailed Tracking | Audit Process Creation | Success | Captures all process launches on the DC, useful for detecting unusual execution |
-<img width="658" height="407" alt="image" src="https://github.com/user-attachments/assets/5fdb9f39-531c-4b18-b5b8-51eb0fbc5588" />
+<img width="658" height="407" alt="image" src="../assets/04-active-directory/13-audit-logging/5.png" />
 
 ---
 
@@ -82,7 +82,7 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 |---|---|---|---|
 | DS Access | Audit Directory Service Access | Success and Failure | Captures reads and queries against AD objects |
 | DS Access | Audit Directory Service Changes | Success and Failure | Captures creates, modifies, moves, and undeletes of AD objects |
-<img width="776" height="376" alt="image" src="https://github.com/user-attachments/assets/463f7b10-ca43-4e66-bdd5-6c6bdb51d0a7" />
+<img width="776" height="376" alt="image" src="../assets/04-active-directory/13-audit-logging/6.png" />
 
 ---
 
@@ -91,7 +91,7 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 | Logon/Logoff | Audit Account Lockout | Success and Failure | Captures account lockout events |
 | Logon/Logoff | Audit Logoff | Success | Captures session terminations |
 | Logon/Logoff | Audit Logon | Success and Failure | Captures interactive and network logons and failures |
-<img width="735" height="473" alt="image" src="https://github.com/user-attachments/assets/2a6b5cf6-70d0-45a9-89ab-46ff22845d53" />
+<img width="735" height="473" alt="image" src="../assets/04-active-directory/13-audit-logging/7.png" />
 
 ---
 
@@ -99,7 +99,7 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 |---|---|---|---|
 | Object Access | Audit File Share | Success and Failure | Captures network share access events |
 | Object Access | Audit File System | Success and Failure | Captures file and folder access events where SACLs are configured |
-<img width="744" height="512" alt="image" src="https://github.com/user-attachments/assets/f53c4d6d-b26d-4946-8b16-3b5f8bbba8b7" />
+<img width="744" height="512" alt="image" src="../assets/04-active-directory/13-audit-logging/8.png" />
 
 ---
 
@@ -107,14 +107,14 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 |---|---|---|---|
 | Policy Change | Audit Policy Change | Success and Failure | Captures changes to the audit policy itself |
 | Policy Change | Audit Authentication Policy Change | Success and Failure | Captures changes to domain trust and authentication policies |
-<img width="769" height="430" alt="image" src="https://github.com/user-attachments/assets/c167316f-66fc-43c8-8ab7-b078f9bb148b" />
+<img width="769" height="430" alt="image" src="../assets/04-active-directory/13-audit-logging/9.png" />
 
 ---
 
 | Category | Subcategory | Setting | Reason |
 |---|---|---|---|
 | Privilege Use | Audit Sensitive Privilege Use | Success and Failure | Captures use of sensitive privileges such as SeDebugPrivilege and SeTakeOwnershipPrivilege |
-<img width="793" height="400" alt="image" src="https://github.com/user-attachments/assets/cc068051-d90c-4269-b3e6-d143f0bdc0d2" />
+<img width="793" height="400" alt="image" src="../assets/04-active-directory/13-audit-logging/10.png" />
 
 
 ---
@@ -123,7 +123,7 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 |---|---|---|---|
 | System | Audit Security State Change | Success and Failure | Captures system startup, shutdown, and security subsystem state changes |
 | System | Audit System Integrity | Success and Failure | Captures violations of security subsystem integrity |
-<img width="782" height="452" alt="image" src="https://github.com/user-attachments/assets/da41f019-25f8-4d76-a021-a4a543ed6c72" />
+<img width="782" height="452" alt="image" src="../assets/04-active-directory/13-audit-logging/11.png" />
 
 
 ---
@@ -142,8 +142,8 @@ Computer Configuration > Policies > Windows Settings > Security Settings > Advan
 
 Verified via `auditpol /get /category:*` after running `gpupdate /force`:
 
-<img width="714" height="717" alt="image" src="https://github.com/user-attachments/assets/b560cf6b-b247-4e38-8cf5-a0d87564eebd" />
-<img width="672" height="715" alt="image" src="https://github.com/user-attachments/assets/1d3bbbe3-d1ba-4018-9429-efb68914b55a" />
+<img width="714" height="717" alt="image" src="../assets/04-active-directory/13-audit-logging/12.png" />
+<img width="672" height="715" alt="image" src="../assets/04-active-directory/13-audit-logging/13.png" />
 
 
 
