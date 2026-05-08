@@ -38,4 +38,4 @@ Dashy is not treated as the source of truth for service health. Uptime Kuma rema
 
 ---
 
-![Dashy dashboard showing homelab service links](assets/02-promox/Dashy/1.png)
+![Dashy dashboard showing homelab service links](../../assets/02-promox/Dashy/1.png)
