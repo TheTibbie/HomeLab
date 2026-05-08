@@ -36,4 +36,4 @@ Dashy is treated as a convenience dashboard. Uptime Kuma is the stronger source 
 
 ---
 
-![Uptime Kuma dashboard showing monitored homelab services](https://github.com/user-attachments/assets/a2213ff9-d87c-49f1-8bbf-1e341c88e069)
+![Uptime Kuma dashboard showing monitored homelab services](../../assets/02-promox/uptime-kuma/1.png)
