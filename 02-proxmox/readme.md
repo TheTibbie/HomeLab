@@ -45,4 +45,4 @@ In brief:
 
 ---
 
-![Proxmox cluster overview showing four-node membership](https://github.com/user-attachments/assets/50436868-09be-49c8-8079-79538e1bd68a)
+![Proxmox cluster overview showing four-node membership](../assets/02-promox/1.png)
