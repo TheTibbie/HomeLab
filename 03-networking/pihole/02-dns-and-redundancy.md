@@ -17,7 +17,7 @@ DHCP is handled by OPNsense, which distributes two Pi-hole DNS servers to client
 | DNS #1 | `pihole` (CT 101, `proxmox-02`) |
 | DNS #2 | `pihole-b` (CT 102, `proxmox-03`) |
 
-<img width="600" height="752" alt="image" src=../../assets/03-networking/pihole/1.png" />
+<img width="600" height="752" alt="image" src="../../assets/03-networking/pihole/1.png" />
 
 *OPNsense DHCP scope distributing both Pi-hole instances as DNS servers. Full addresses are redacted.*
 
