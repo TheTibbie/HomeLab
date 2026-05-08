@@ -58,4 +58,4 @@ The cutover and recovery process is documented in:
 
 ---
 
-<img width="335" height="196" alt="Proxmox cluster node hardware summary" src="https://github.com/user-attachments/assets/5867599f-ddb0-417b-b4ec-ec0c244c4560" />
+<img width="335" height="196" alt="Proxmox cluster node hardware summary" src="../../assets/02-promox/nodes/01-node-hardware-profiles/1.png" />
