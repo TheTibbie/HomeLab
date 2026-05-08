@@ -65,9 +65,9 @@ Both containers are included in the Proxmox backup plan. See [PBS weekly backups
 
 ---
 
-![Pi-hole primary instance dashboard](https://github.com/user-attachments/assets/cbf25f08-2bc4-47b2-b704-9f0b884a2cec)
+![Pi-hole primary instance dashboard](../../assets/03-networking/pihole/1.png)
 
-![Pi-hole secondary instance dashboard](https://github.com/user-attachments/assets/c340dab6-288a-48f6-89ba-150acc442046)
+![Pi-hole secondary instance dashboard](../../assets/03-networking/pihole/2.png)
 
 ---
 
