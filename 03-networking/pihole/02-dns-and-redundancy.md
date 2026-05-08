@@ -17,7 +17,7 @@ DHCP is handled by OPNsense, which distributes two Pi-hole DNS servers to client
 | DNS #1 | `pihole` (CT 101, `proxmox-02`) |
 | DNS #2 | `pihole-b` (CT 102, `proxmox-03`) |
 
-<img width="600" height="752" alt="image" src="https://github.com/user-attachments/assets/83589356-3da5-4ac6-ab0d-3d72d8045127" />
+<img width="600" height="752" alt="image" src=../../assets/03-networking/pihole/1.png" />
 
 *OPNsense DHCP scope distributing both Pi-hole instances as DNS servers. Full addresses are redacted.*
 
@@ -47,8 +47,8 @@ Because the two instances run on separate Proxmox nodes, a single node outage do
 
 Both instances use Google as upstream DNS.
 
-<img width="819" height="324" alt="image" src="https://github.com/user-attachments/assets/5fa9b4f8-2acd-4683-b062-7ab6bbb31b5d" />
-<img width="861" height="292" alt="image" src="https://github.com/user-attachments/assets/4c18ed94-b106-4efb-85fb-a5a3e44b1ce3" />
+<img width="819" height="324" alt="image" src="../../assets/03-networking/pihole/3.png" />
+<img width="861" height="292" alt="image" src="../../assets/03-networking/pihole/4.png" />
 
 ---
 
