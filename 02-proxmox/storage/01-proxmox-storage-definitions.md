@@ -15,7 +15,7 @@ Keep cluster storage consistent: per-node guest storage using LVM-thin, centrali
 | `iso-nfs` | NFS | Shared | ISO library hosted on PBS — upload once, available cluster-wide |
 | `pbs-t7` | PBS | Shared | Backup target — datastore `t7-backups` |
 
-<img width="302" height="735" alt="image" src="https://github.com/user-attachments/assets/d0c913a0-651f-449c-83d6-61fd1f4fe5b6" />
+<img width="302" height="735" alt="image" src="../../assets/02-promox/storage/01-proxmox-storage-definitions/1.png" />
 
 ---
 
