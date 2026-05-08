@@ -37,8 +37,5 @@ This did not change the retention model. Proxmox still sends backups to PBS, and
 
 ---
 
-<img width="1668" height="491" alt="PBS retention configuration" src="https://github.com/user-attachments/assets/03802301-8673-4515-aab8-0b492cdb548c" />
+<img width="1668" height="491" alt="PBS retention configuration" src="../../assets/02-promox/pbs-weekly-backups/03-retention-strategy/1.png" />
 
-<img width="1728" height="274" alt="PBS prune job configuration" src="https://github.com/user-attachments/assets/ae907fc4-5b37-41a3-b5ee-2c56e583db84" />
-
-<img width="1302" height="265" alt="PBS retention validation screenshot" src="https://github.com/user-attachments/assets/e8789c42-98a5-415e-beea-acee2fb88cff" />
