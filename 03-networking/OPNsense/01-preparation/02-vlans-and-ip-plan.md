@@ -24,4 +24,4 @@ VLAN 99 for Management is a deliberate choice — a high, out-of-band ID that's 
 
 ## Screenshots
 
-<img width="865" height="509" alt="image" src="https://github.com/user-attachments/assets/8d22a538-4e67-4bb2-bd85-e5ba8ea19e8a" />
+<img width="865" height="509" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/1.png" />
