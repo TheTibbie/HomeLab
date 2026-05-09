@@ -36,7 +36,7 @@ OPNsense is the active router and firewall for the environment. Current responsi
 
 The LAN parent interface is the VLAN trunk parent only. It does not carry an IP address from the old flat network.
 
-<img width="874" height="507" alt="OPNsense interface assignments after the VLAN cutover" src="https://github.com/user-attachments/assets/3be57412-c00b-40c2-b76f-9e6e78eb0d6d" />
+<img width="874" height="507" alt="OPNsense interface assignments after the VLAN cutover" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/1.png" />
 
 ---
 
@@ -64,7 +64,7 @@ During staging, Kea was configured but left disabled to avoid conflicts with the
 | Management / Servers | Active | Management, infrastructure, and migrated services |
 | Servers | Staged | Not currently the active server placement model |
 
-<img width="870" height="549" alt="OPNsense Kea DHCP scopes after the VLAN cutover" src="https://github.com/user-attachments/assets/e3c8e9cb-dc5e-45be-bc23-69652cfe9c10" />
+<img width="870" height="549" alt="OPNsense Kea DHCP scopes after the VLAN cutover" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/2.png" />
 
 ---
 
@@ -122,7 +122,7 @@ Blocked:
 - Direct DNS to external resolvers
 - Unnecessary access to untrusted VLANs
 
-<img width="872" height="574" alt="OPNsense workstation VLAN firewall rules" src="https://github.com/user-attachments/assets/8a0a15f1-cd58-4604-9925-a5afa45a06bd" />
+<img width="872" height="574" alt="OPNsense workstation VLAN firewall rules" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/3.png" />
 
 ---
 
@@ -179,7 +179,7 @@ Current workloads in this VLAN:
 
 Long term, some workloads may be moved out of this VLAN when the switching layer supports it and isolation provides a clear benefit.
 
-<img width="857" height="514" alt="OPNsense Management / Servers VLAN firewall rules" src="https://github.com/user-attachments/assets/c53ac434-9c7b-4651-81eb-e35df9a30f79" />
+<img width="857" height="514" alt="OPNsense Management / Servers VLAN firewall rules" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/4.png" />
 
 ---
 
@@ -207,7 +207,7 @@ Aliases are used throughout the firewall rules to keep policy readable and maint
 - Remove unused staged references if the dedicated server VLAN remains deferred
 - Confirm temporary transition rules are still required before keeping them
 
-<img width="968" height="1232" alt="OPNsense firewall aliases used for VLAN policy" src="https://github.com/user-attachments/assets/45b21a5f-1a52-45a0-8175-fcb2391da6c1" />
+<img width="968" height="1232" alt="OPNsense firewall aliases used for VLAN policy" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/5.png" />
 
 ---
 
