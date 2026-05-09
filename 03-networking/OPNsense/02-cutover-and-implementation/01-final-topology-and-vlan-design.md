@@ -10,23 +10,9 @@ Full IP addresses, MAC addresses, WAN details, and device-specific identifiers a
 
 ## High-Level Topology
 
-```mermaid
-flowchart TD
-    ISP[Upstream ISP / Modem]
-    FW[OPNsense VM<br/>Routing, DHCP, Firewall]
-    SW[Managed Switch<br/>VLAN trunking and access ports]
-    AP[Wireless AP<br/>VLAN-backed SSIDs]
-    PC[Trusted Workstation Port]
-    INFRA[Infrastructure Uplink<br/>Proxmox Nodes / PBS / Services]
-    RECOVERY[Recovery Port<br/>Emergency local access]
+## High-Level Topology
 
-    ISP --> FW
-    FW --> SW
-    SW --> PC
-    SW --> AP
-    SW --> INFRA
-    SW --> RECOVERY
-```
+![High-level network topology](../../../assets/03-networking/OPNsense/02-cutover-and-implementation/01-final-topology-and-vlan-design/diagram.png)
 
 - OPNsense acts as the router, firewall, DHCP service, and inter-VLAN control point
 - The managed switch carries tagged VLAN traffic where needed
