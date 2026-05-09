@@ -85,4 +85,4 @@ Static reservations are configured for all infrastructure hosts. Kea will assign
 
 ## Screenshots
 
-<img width="859" height="551" alt="image" src="https://github.com/user-attachments/assets/4cae5b08-4cb9-4113-9c43-ad6dad00c008" />
+<img width="859" height="551" alt="image" src="../../../assets/03-networking/OPNsense/01-preparation/03-dns-ntp-dhcp/1.png"/>
