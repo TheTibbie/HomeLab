@@ -10,8 +10,6 @@ Full IP addresses, MAC addresses, WAN details, and device-specific identifiers a
 
 ## High-Level Topology
 
-## High-Level Topology
-
 ![High-level network topology](../../../assets/03-networking/OPNsense/02-cutover-and-implementation/01-final-topology-and-vlan-design/diagram.png)
 
 - OPNsense acts as the router, firewall, DHCP service, and inter-VLAN control point
