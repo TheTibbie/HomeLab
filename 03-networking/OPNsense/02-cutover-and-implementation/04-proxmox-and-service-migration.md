@@ -30,7 +30,7 @@ The Proxmox nodes were moved from the old flat network to the Management / Serve
 
 The migration was handled carefully because losing Proxmox access would also affect recovery options for OPNsense, service containers, and virtual machines.
 
-<img width="219" height="165" alt="Proxmox node status after management migration" src="https://github.com/user-attachments/assets/049c6efb-5734-4641-9a90-6663ecc8668c" />
+<img width="219" height="165" alt="Proxmox node status after management migration" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/04-proxmox-and-service-migration/1.png" />
 
 ---
 
@@ -99,7 +99,7 @@ This confirms PBS is online after the network migration and is no longer only a 
 | Home Assistant | Management / Servers | Migrated and reachable |
 | Proxmox Backup Server | Management / Servers | Migrated, online, and validated after the cutover |
 
-<img width="923" height="861" alt="Service inventory after migration to Management / Servers VLAN" src="https://github.com/user-attachments/assets/12cc0963-444a-49cd-8d07-4f8699ae84d1" />
+<img width="923" height="861" alt="Service inventory after migration to Management / Servers VLAN" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/04-proxmox-and-service-migration/2.png" />
 
 ---
 
@@ -107,7 +107,7 @@ This confirms PBS is online after the network migration and is no longer only a 
 
 Omada was moved onto the Management / Servers VLAN early in the cutover because it manages the switch and AP. Losing controller access during the cutover complicated switch recovery, so restoring it became a priority. After migration, Omada was reachable from the trusted workstation network through the required management path.
 
-<img width="887" height="781" alt="Omada Controller reachable after service migration" src="https://github.com/user-attachments/assets/fb7a3cb2-ba98-46ed-ba66-f336e94d3de2" />
+<img width="887" height="781" alt="Omada Controller reachable after service migration" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/04-proxmox-and-service-migration/3.png" />
 
 ---
 
@@ -131,7 +131,7 @@ Dashy was moved onto the Management / Servers VLAN with the other migrated servi
 
 Dashy is treated as a convenience layer, not the source of truth for service health. Uptime Kuma remains the better validation point for monitoring whether services are reachable.
 
-<img width="957" height="813" alt="Dashy dashboard after migration to Management / Servers VLAN" src="https://github.com/user-attachments/assets/6718fe9f-b972-41fd-a2a9-da87360b7031" />
+<img width="957" height="813" alt="Dashy dashboard after migration to Management / Servers VLAN" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/04-proxmox-and-service-migration/4.png" />
 
 ---
 
