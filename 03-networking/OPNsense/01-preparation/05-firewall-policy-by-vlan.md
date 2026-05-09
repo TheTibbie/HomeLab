@@ -82,6 +82,6 @@ Management outbound is web-only — enough for updates and downloads without ope
 
 ## Screenshots
 
-<img width="859" height="442" alt="image" src="https://github.com/user-attachments/assets/18bc7c67-79c4-4bbf-b079-068f6198848a" />
+<img width="859" height="442" alt="image" src="../../../assets/03-networking/OPNsense/01-preparation/05-firewall-policy-by-vlan/1.png" />
 
-<img width="872" height="413" alt="image" src="https://github.com/user-attachments/assets/75fdffd6-e42f-4a9b-91db-522642421d9a" />
+<img width="872" height="413" alt="image" src="../../../assets/03-networking/OPNsense/01-preparation/05-firewall-policy-by-vlan/2.png" />
