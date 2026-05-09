@@ -42,4 +42,4 @@ Aliases keep firewall rules readable and maintainable. Rather than hardcoding IP
 
 ## Screenshots
 
-<img width="981" height="1035" alt="image" src="https://github.com/user-attachments/assets/1dae8d2c-0dcf-4f68-9a94-fbc55e69c643" />
+<img width="981" height="1035" alt="image" src="../../../assets/03-networking/OPNsense/01-preparation/04-firewall-aliases/1.png" />
