@@ -33,7 +33,7 @@ flowchart TD
 - The wireless AP broadcasts SSIDs mapped to VLANs
 - Proxmox infrastructure and services currently sit behind the infrastructure uplink
 - A dedicated recovery path remains available for local troubleshooting
-<img width="874" height="507" alt="image" src="https://github.com/user-attachments/assets/6d127df8-622a-40df-9b11-ce5879d666b4" />
+<img width="874" height="507" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/02-opnsense-firewall-and-dhcp/1.png" />
 
 
 ---
@@ -51,8 +51,8 @@ The managed switch provides:
 - A recovery/emergency access port
 
 The wireless AP is managed through Omada and broadcasts wireless networks mapped to the appropriate VLANs.
-<img width="885" height="684" alt="image" src="https://github.com/user-attachments/assets/7b1cdd74-c3bd-422e-b6fb-e8d811c52d13" />
-<img width="866" height="413" alt="image" src="https://github.com/user-attachments/assets/13cb7c38-aec5-41c3-afd6-ebd0db422b71" />
+<img width="885" height="684" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/03-switch-wireless-and-omada/1.png" />
+
 
 
 ---
@@ -69,7 +69,7 @@ The wireless AP is managed through Omada and broadcasts wireless networks mapped
 
 The addressing design uses private RFC1918 space with a consistent VLAN-to-subnet pattern. Full subnet values are redacted.
 
-<img width="296" height="645" alt="image" src="https://github.com/user-attachments/assets/fc9edd9f-0ed0-4049-bcc6-abf0013680fb" />
+<img width="296" height="645" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/01-final-topology-and-vlan-design/3.png" />
 
 
 ---
@@ -85,7 +85,7 @@ The wireless AP is adopted into Omada and broadcasts SSIDs mapped to separate VL
 | Guest wireless | Guest | Isolated guest access |
 
 Wireless clients land in the correct security zone without needing separate physical networks. The workstation and IoT wireless networks have been validated with live client devices.
-<img width="1842" height="249" alt="image" src="https://github.com/user-attachments/assets/e1f29a7b-1df9-4790-97f2-2167aa7dc034" />
+<img width="1842" height="249" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/01-final-topology-and-vlan-design/4.png" />
 
 ---
 
@@ -100,7 +100,7 @@ Exact live port mappings are intentionally generalized. The important point is t
 | Wireless AP trunk | Tagged VLANs for SSIDs | Carries workstation, IoT, and guest VLANs to the AP |
 | Infrastructure uplink | Untagged management/server VLAN, plus transitional tags where needed | Connects Proxmox nodes, PBS, and supporting services |
 | Recovery port | Untagged default/recovery network | Provides emergency access if switch or management configuration breaks |
-<img width="866" height="413" alt="image" src="https://github.com/user-attachments/assets/d276ef71-93e5-4744-ab12-70207306a19c" />
+<img width="866" height="413" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/03-switch-wireless-and-omada/2.png"/>
 
 ---
 
@@ -135,7 +135,7 @@ The dedicated server VLAN remains staged for future use when the physical switch
 | Dashy | Management / Servers |
 | Media server / Jellyfin | Management / Servers |
 | Home Assistant | Management / Servers |
-<img width="367" height="850" alt="image" src="https://github.com/user-attachments/assets/11158d97-930e-4426-a335-d90551e6fad5" />
+<img width="367" height="850" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/01-final-topology-and-vlan-design/5.png" />
 
 ---
 
