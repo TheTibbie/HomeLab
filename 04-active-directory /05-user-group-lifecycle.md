@@ -29,7 +29,7 @@ AD is case-insensitive for authentication and lookups. SamAccountNames work iden
 
 All accounts were created with an initial password and User must change password at next logon enforced.
 
-<img width="600" height="500" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/user-groups.png" />
+<img width="600" height="900" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/user-groups.png" />
 
 <img width="961" height="720" alt="image" src="../assets/04-active-directory/05-user-group-lifecycle/user-group-ps.png" />
 
