@@ -27,8 +27,8 @@ All five VLAN interfaces (Workstations, Servers, IoT, Guest, Management) are log
 
 ## Screenshots
 
-<img width="1806" height="671" alt="image" src="https://github.com/user-attachments/assets/bb9e6844-32d5-46a7-a761-3adc09fc1a82" />
+<img width="1806" height="671" alt="image" src="../../../assets/03-networking/OPNsense/01-preparation/01-environment-and-staging/1.png" />
 
 
-<img width="831" height="390" alt="image" src="https://github.com/user-attachments/assets/983ea102-27b6-4af8-b4fd-5fb40499f405" />
+<img width="831" height="390" alt="image" src="../../../assets/03-networking/OPNsense/01-preparation/01-environment-and-staging/2.png" />
 
