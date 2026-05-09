@@ -19,7 +19,7 @@ Omada manages the switch and wireless AP from a central interface. Current respo
 - Applying port and wireless configuration consistently
 
 The Omada Controller runs as a self-hosted service on the Management / Servers VLAN alongside other infrastructure services.
-<img width="890" height="709" alt="image" src="https://github.com/user-attachments/assets/86dbf10b-7efd-495e-a973-53b28c5bbbcb" />
+<img width="890" height="709" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/03-switch-wireless-and-omada/1.png" />
 
 ---
 
@@ -55,7 +55,7 @@ Exact live port mappings are intentionally generalized. The important point is t
 This keeps the routing and firewall role on OPNsense while the switch handles VLAN tagging and endpoint placement.
 The switch is adopted in Omada and currently operating with this role-based layout.
 
-<img width="866" height="413" alt="image" src="https://github.com/user-attachments/assets/aa37254e-832a-4b94-ba96-743923b013ca" />
+<img width="866" height="413" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/03-switch-wireless-and-omada/2.png" />
 
 ---
 
@@ -68,7 +68,7 @@ The AP is adopted into Omada and provides VLAN-backed wireless networks. It rece
 | Workstation wireless | Workstations | Trusted wireless clients |
 | IoT wireless | IoT | Smart TVs, wireless test clients, and future IoT devices |
 | Guest wireless | Guest | Guest access with restricted internal reachability |
-<img width="1831" height="253" alt="image" src="https://github.com/user-attachments/assets/15ef4c5f-f385-44f0-847d-3a5fb24ea995" />
+<img width="1831" height="253" alt="image" src="../../../assets/03-networking/OPNsense/02-cutover-and-implementation/03-switch-wireless-and-omada/3.png" />
 
 
 ---
