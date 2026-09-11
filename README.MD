@@ -25,8 +25,11 @@ Current implemented areas include:
 - Managed switching through Omada
 - VLAN-backed wireless networks
 - Pi-hole DNS filtering
-- Uptime Kuma monitoring
+- Internal `home.arpa` DNS and Caddy reverse proxy
+- Prometheus, Grafana, Loki, Alloy, exporters, and alerting
+- Uptime Kuma independent availability monitoring
 - Dashy service dashboard
+- Off-host configuration backup and recovery documentation
 - Active Directory lab with domain controller deployment and validation
 
 Some items remain in cleanup, revalidation, or hardening phases. Those are documented directly instead of being hidden.
@@ -56,8 +59,10 @@ This repository is written as an infrastructure documentation portfolio, not a g
 |---|---|
 | Overview | Purpose, scope, architecture goals, and high-level design decisions |
 | Proxmox | Cluster design, node layout, storage, backup planning, and operational notes |
-| Networking | Pi-hole, OPNsense, VLAN segmentation, firewall policy, Omada, wireless, and cutover documentation |
+| Networking | Pi-hole, OPNsense, VLAN segmentation, internal DNS, reverse proxy, Omada, wireless, and cutover documentation |
 | Active Directory | AD DS installation, domain promotion, OU structure, validation, and administrative workflow documentation |
+| Monitoring | Prometheus, Grafana, host/guest/container monitoring, logging, service probes, and alerting |
+| Configuration Backups | Off-host configuration backup coverage, encryption approach, validation, and recovery planning |
 
 ---
 
@@ -68,6 +73,8 @@ The environment is built around a Proxmox VE cluster hosting infrastructure and 
 OPNsense now acts as the active routing and firewall layer. VLAN segmentation is implemented for workstation, IoT, guest, and management/server roles. Managed switching and wireless VLAN mapping are handled through Omada.
 
 The current design includes a practical Management / Servers VLAN consolidation because some infrastructure still sits behind an unmanaged switch. A dedicated server VLAN remains staged for future use when the switching layer supports it cleanly.
+
+Internal DNS uses the `home.arpa` namespace with matching records on both Pi-hole instances. Selected internal applications use Caddy for cleaner internal URLs, while infrastructure management interfaces remain DNS-only on their normal management ports.
 
 Active Directory is also documented as a separate systems administration lab area, including domain controller setup, validation, and future administrative structure.
 
@@ -89,22 +96,34 @@ Active Directory is also documented as a separate systems administration lab are
 - Default-deny inter-VLAN posture where practical
 - Explicit allow rules for required management and service paths
 - DNS centralized through Pi-hole
+- Internal `home.arpa` naming implemented
+- Caddy reverse proxy used for selected internal application access
 - NTP centralized through OPNsense
 - Omada-managed switch and wireless AP
 - Temporary management/adoption path documented for switch/AP cleanup
 
 ### Monitoring and Dashboards
 
-- Uptime Kuma used for service availability monitoring
+- Prometheus used for metrics collection
+- Grafana used for dashboards and alerting
+- Node Exporter used for Proxmox/PBS host metrics
+- Proxmox API metrics used for cluster and guest visibility
+- cAdvisor used for Docker container metrics
+- Blackbox Exporter used for selected service-path checks
+- Loki and Alloy used for centralized logging
+- Uptime Kuma retained as an independent availability check
+- Telegram used for selected Grafana alerts
 - Dashy used as a convenience dashboard for service access
-- Monitoring targets updated after network migration
-- Service screenshots and URLs redacted before publishing
 
 ### Backups
 
-- Proxmox Backup Server documented as part of the backup architecture
+- Proxmox Backup Server documented as part of the guest backup architecture
+- Staggered per-node PBS backup schedule documented
 - Retention, garbage collection, and verification workflow documented
-- Proxmox nodes validated against the PBS target on the new addressing scheme
+- Off-host configuration backups created for major infrastructure components
+- Sensitive recovery material encrypted before off-host storage where required
+- SHA-256 validation used during the configuration-backup project
+- Backup payloads and secret material are not stored in GitHub
 
 ### Active Directory
 
@@ -129,13 +148,19 @@ README.MD
   Purpose, scope, architecture goals, and high-level documentation
 
 02-proxmox/
-  Proxmox cluster, nodes, storage, backups, maintenance, and operations
+  Proxmox cluster, nodes, storage, PBS backups, maintenance, and operations
 
 03-networking/
-  Pi-hole, OPNsense, VLANs, firewall policy, Omada, wireless, and cutover documentation
+  Pi-hole, OPNsense, VLANs, firewall policy, internal DNS, reverse proxy, Omada, wireless, and cutover documentation
 
 04-active-directory/
   Active Directory Domain Services, domain controller configuration, OU structure, and administrative workflows
+
+05-monitoring/
+  Prometheus, Grafana, host/guest/container monitoring, application probes, logging, and alerting
+
+06-config-backups/
+  Configuration backup coverage, off-host storage, security, integrity validation, and recovery notes
 ```
 
 Folder numbering may evolve as the lab expands. The goal is clear documentation structure, not keeping the original numbering forever.
@@ -154,6 +179,8 @@ The cutover documentation includes:
 - Proxmox and service migration
 - Issues encountered and resolutions
 - Post-cutover validation and cleanup
+
+The internal DNS and reverse proxy project is also complete. It adds redundant `home.arpa` DNS records, DNS-only infrastructure management names, and a dedicated Caddy reverse proxy for selected internal applications without adding WAN exposure.
 
 This section is important because it documents both the final architecture and the recovery work required during the cutover, including routing fixes, quorum recovery, switch recovery, DNS troubleshooting, and temporary management-path decisions.
 
@@ -193,11 +220,15 @@ This repository demonstrates hands-on work across several infrastructure areas:
 - OPNsense firewall and VLAN implementation
 - Managed switch and wireless VLAN configuration
 - DNS filtering and resolver design with Pi-hole
+- Internal DNS design using `home.arpa`
+- Internal reverse proxy deployment with Caddy
 - Network cutover planning and recovery
 - Proxmox quorum and Corosync troubleshooting
-- Service monitoring with Uptime Kuma
-- Dashboard organization with Dashy
+- Prometheus and Grafana observability design
+- Proxmox/PBS, VM/LXC, Docker, application, and log monitoring
+- Grafana alerting with an independent Uptime Kuma watchdog path
 - Backup planning and PBS maintenance documentation
+- Off-host configuration backup, encryption, and integrity validation
 - Active Directory Domain Services deployment, GPOs, automation, backup/recovery, and audit logging
 - Operational documentation with screenshots, validation, and issue tracking
 - Security-conscious redaction for public-facing documentation
@@ -231,16 +262,23 @@ The documentation intentionally includes imperfect parts of the build. Real infr
 - VLAN segmentation implemented
 - Omada-managed switch and wireless AP adopted
 - Workstation, IoT, and guest wireless roles configured
-- Uptime Kuma monitoring updated after migration
+- Internal `home.arpa` DNS implemented
+- Caddy reverse proxy implemented for selected internal services
+- Prometheus/Grafana monitoring stack built and validated
+- Loki/Alloy centralized logging implemented
+- Grafana alerting and independent Uptime Kuma monitoring implemented
+- Full configuration-backup project completed and copied off-host
 - Active Directory Domain Services lab fully built, tested, and documented
 
 ### Cleanup and Revalidation
 
 - Continue periodic PBS backup and restore validation
+- Validate the staggered PBS schedule during normal weekend cycles
 - Review OPNsense aliases for stale staged VLAN references
 - Remove temporary firewall or management paths when safe
 - Review Dashy links after service migrations
 - Confirm monitoring targets remain current
+- Refresh configuration backups after meaningful infrastructure changes
 - Continue documenting deferred workloads as they become active
 
 ### Future Hardening

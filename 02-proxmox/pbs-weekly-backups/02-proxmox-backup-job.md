@@ -1,10 +1,10 @@
-# Proxmox Backup Job (Weekly)
+# Proxmox Backup Jobs (Staggered Weekly)
 
 ## Goal
 
-Run a predictable, low-touch weekly backup to PBS using snapshot mode, covering production guests.
+Run predictable, low-touch backups to PBS using snapshot mode while avoiding unnecessary concurrent load on the backup path.
 
-After the OPNsense VLAN cutover, the backup target was validated against the PBS server on the Management / Servers VLAN.
+The original design used one Sunday backup job for most guests. After reliability testing, the schedule was split into four per-node jobs across Saturday and Sunday.
 
 ---
 
@@ -12,26 +12,43 @@ After the OPNsense VLAN cutover, the backup target was validated against the PBS
 
 | Detail | Value |
 |---|---|
-| Schedule | Sundays at `01:00` |
 | Mode | `Snapshot` |
 | Compression | `ZSTD (fast and good)` |
 | Selection mode | `Include selected VMs` |
 | Target | `pbs-t7` |
 | Notes template | `{{guestname}}` |
+| Retention | Handled by PBS |
 
 ---
 
-## Guests in Scope
+## Current Schedule
 
-| ID | Guest | Type | Node |
-|---|---|---|---|
-| VM 100 | `media-vm` | Virtual Machine | `proxmox-01` |
-| CT 101 | `pihole` | LXC Container | `proxmox-02` |
-| CT 102 | `pihole-b` | LXC Container | `proxmox-03` |
-| CT 103 | `uptime-kuma` | LXC Container | `proxmox-02` |
-| VM 104 | `opnsense-lab` | Virtual Machine | `proxmox-04` |
-| VM 105 | `homeassistant` | Virtual Machine | `proxmox-02` |
-| CT 120 | `dashy` | LXC Container | `proxmox-01` |
+| Schedule | Node | Guests |
+|---|---|---|
+| Saturday at `01:00` | `proxmox-01` | 100, 120 |
+| Saturday at `04:00` | `proxmox-02` | 101, 103, 105, 200 |
+| Sunday at `01:00` | `proxmox-03` | 102, 109, 110 |
+| Sunday at `04:00` | `proxmox-04` | 104 |
+
+The Sunday `proxmox-03` job was later expanded to include CT 110 after the internal DNS / reverse proxy project was completed.
+
+---
+
+## Why the Schedule Changed
+
+The previous single-job design created unnecessary competition for the PBS connection.
+
+During testing, VM 104 repeatedly failed scheduled backups while a manual standalone backup completed successfully. PBS was also found to be negotiating at `100 Mb/s`.
+
+Rather than redesigning the network during the backup project, the jobs were staggered by node.
+
+The current design:
+
+- Reduces simultaneous backup traffic
+- Gives VM 104 its own backup window
+- Adds VM 109 and CT 200, which were missing from the older schedule
+- Includes CT 110 after the reverse proxy deployment
+- Keeps the same centralized PBS target
 
 ---
 
@@ -39,17 +56,12 @@ After the OPNsense VLAN cutover, the backup target was validated against the PBS
 
 Snapshot mode allows backups to run against live guests without shutting them down, keeping services continuously available.
 
-For a homelab where most workloads run 24/7, it is the right default. Suspend or stop mode would introduce unnecessary downtime on a weekly basis.
+For a homelab where most workloads run 24/7, it remains the preferred default. Suspend or stop mode would introduce unnecessary downtime during the weekly backup cycle.
 
 ---
 
-## Post-Cutover Validation
+## Validation
 
-After PBS was migrated onto the Management / Servers VLAN, the backup target was validated from Proxmox.
+Manual backup testing confirmed that the PBS path works when jobs are separated from competing backup traffic.
 
-Validation confirmed:
-
-- The `pbs-t7` storage target remains available
-- Backup jobs still point to the expected PBS datastore
-- PBS is reachable from the Proxmox nodes on the new addressing scheme
-- Backup validation remains part of normal operations
+The first full staggered weekend cycle should continue to be reviewed as part of normal backup operations.

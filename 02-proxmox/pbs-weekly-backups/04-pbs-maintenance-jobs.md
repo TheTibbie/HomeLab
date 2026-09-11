@@ -4,7 +4,7 @@
 
 Manage backup lifecycle and storage integrity centrally on PBS for datastore `t7-backups`.
 
-These jobs run automatically after the weekly backup window closes. They keep retention bounded and provide ongoing confidence that retained backups are intact and restorable.
+The maintenance schedule was moved away from the weekend guest backup windows after the Proxmox backup jobs were staggered across Saturday and Sunday.
 
 ---
 
@@ -12,42 +12,68 @@ These jobs run automatically after the weekly backup window closes. They keep re
 
 | Job | Schedule | Configuration |
 |---|---|---|
-| Prune | Sundays at `02:00` | `keep-last=2` |
-| Garbage Collection | Sundays at `03:00` | Scheduled after prune |
-| Verify | Sundays at `04:00` | Re-verify after 30 days |
+| Verify | Monday at `01:00` | `ignore-verified=1`, `outdated-after=30` |
+| Prune | Wednesday at `02:00` | `keep-last=4`, `keep-monthly=3` |
+| Garbage Collection | Wednesday at `03:00` | Scheduled after prune |
 
 ---
 
-## Why This Sequence Matters
+## Why the Schedule Changed
 
-The three jobs run in deliberate order.
+The original maintenance jobs ran directly after the Sunday backup window.
 
-Prune runs first to mark old snapshots for removal.
+That worked when the cluster used a single weekly backup job, but the newer design spreads guest backups across Saturday and Sunday. Maintenance was moved to separate days so verification, pruning, and garbage collection do not compete with active guest backups.
 
-Garbage collection follows to reclaim the physical space freed by pruning. In a deduplicated datastore, space is not released until garbage collection runs, so the order matters.
+The current order is deliberate:
 
-Verify runs last against what remains. This provides a weekly confirmation that the retained backups are intact and restorable.
-
-Running verify after prune and garbage collection means it checks the backups that actually matter, not snapshots that are about to be removed.
-
----
-
-## Post-Cutover Note
-
-After the OPNsense VLAN cutover, PBS was migrated onto the Management / Servers VLAN and validated from the Proxmox nodes.
-
-The maintenance model did not change. PBS still owns retention, pruning, garbage collection, and verification after the network migration.
+1. Weekend guest backups complete.
+2. Verify runs Monday against the retained backup data.
+3. Prune runs Wednesday to apply retention.
+4. Garbage collection follows prune and reclaims unused datastore space.
 
 ---
 
-## Operational Standard
+## Verify
 
-PBS maintenance jobs should remain enabled and reviewed periodically.
+The verification job runs Monday at `01:00`.
 
-Routine checks should confirm:
+Current settings:
 
-- Prune jobs are scheduled
-- Garbage collection jobs are scheduled
-- Verify jobs are scheduled
+```text
+ignore-verified=1
+outdated-after=30
+```
+
+This avoids repeatedly re-verifying recently checked data while still forcing older backup data back through verification after 30 days.
+
+---
+
+## Prune and Garbage Collection
+
+Prune runs Wednesday at `02:00` using:
+
+```text
+keep-last=4
+keep-monthly=3
+```
+
+Garbage collection follows at `03:00`.
+
+In a deduplicated datastore, prune determines which snapshots are no longer retained, while garbage collection performs the separate storage cleanup required to reclaim unused chunks.
+
+---
+
+## Validation
+
+Historical prune, garbage collection, and verification jobs have completed successfully.
+
+During the backup review, the datastore remained healthy and garbage collection had reclaimed unused storage as expected.
+
+Routine checks should continue to confirm:
+
+- Weekend backup jobs complete before maintenance begins
+- Verify remains scheduled for Monday
+- Prune and garbage collection remain scheduled for Wednesday
 - The expected datastore is targeted
-- Backup and restore validation continues as part of normal operations
+- Retention remains appropriate for available storage
+- Periodic restore testing continues as part of normal operations
