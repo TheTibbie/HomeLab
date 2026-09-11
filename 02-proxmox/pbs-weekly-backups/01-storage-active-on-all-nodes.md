@@ -16,29 +16,46 @@ After the OPNsense VLAN cutover, PBS was migrated onto the Management / Servers 
 | PBS datastore | `t7-backups` |
 | PBS server | Management / Servers VLAN address |
 | Active on | `proxmox-01`, `proxmox-02`, `proxmox-03`, `proxmox-04` |
+| Backup model | Staggered per-node jobs |
 | Post-cutover status | Online and validated after VLAN migration |
 
 Full IP addresses are intentionally redacted.
 
 ---
 
-## Why It Matters
+## Current Backup Layout
 
-Having a single shared backup target across all nodes means backup policy is consistent by default. A guest can be migrated or placed on any node without changing how or where it gets backed up.
+The original single weekly backup job was replaced with staggered jobs so the nodes do not all push backups to PBS at the same time.
 
-It also avoids per-node backup silos, simplifies retention management, and leaves room to add nodes or guests without redesigning the backup architecture.
+| Node | Backup Window |
+|---|---|
+| `proxmox-01` | Saturday at `01:00` |
+| `proxmox-02` | Saturday at `04:00` |
+| `proxmox-03` | Sunday at `01:00` |
+| `proxmox-04` | Sunday at `04:00` |
+
+All four jobs still use the same `pbs-t7` storage target.
+
+The staggered design was introduced after backup reliability testing showed that the PBS path performed better when larger guests were not competing with the rest of the cluster at the same time.
 
 ---
 
-## Post-Cutover Validation
+## Why It Matters
 
-After the OPNsense VLAN cutover, PBS reachability and storage availability were validated against the new addressing scheme.
+Having a single shared backup target across all nodes means backup policy is consistent by default. A guest can be migrated or placed on another node without changing the PBS storage design.
+
+Separating the backup jobs by node also reduces simultaneous load on the PBS path while keeping the storage and retention model centralized.
+
+---
+
+## Validation
 
 Validation confirmed:
 
-- Proxmox nodes can reach PBS on the Management / Servers VLAN
-- The PBS storage target remains available in Proxmox
+- All four Proxmox nodes can reach PBS
+- The `pbs-t7` storage target is active across the cluster
 - The expected datastore is still used
-- Backup paths survived the network migration
+- Scheduled jobs are distributed across separate backup windows
+- Manual backup testing has completed successfully against the current PBS target
 
 Periodic backup and restore validation remains part of normal operations.
